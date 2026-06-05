@@ -1,5 +1,5 @@
 # Final image only - build Maven separately before docker build
-FROM eclipse-temurin:8-jre-alpine
+FROM openjdk:8-jre-alpine
 LABEL org.opencontainers.image.source="https://github.com/shapia09/seatunnel-web"
 
 ENV DOCKER=true
