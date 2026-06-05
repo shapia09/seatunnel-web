@@ -1,5 +1,5 @@
 # Final image only - build Maven separately before docker build
-FROM openjdk:8-jre-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/inrgihc/openjdk:8-jre-alpine
 LABEL org.opencontainers.image.source="https://github.com/shapia09/seatunnel-web"
 
 ENV DOCKER=true
