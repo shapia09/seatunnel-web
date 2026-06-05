@@ -5,7 +5,7 @@ COPY . .
 RUN mvn package -pl seatunnel-server/seatunnel-app -am -DskipTests -B
 
 # Final image
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:8-jre-alpine
 LABEL org.opencontainers.image.source="https://github.com/shapia09/seatunnel-web"
 
 ENV DOCKER=true
