@@ -9,7 +9,7 @@ ENV SEATUNNEL_WEB_HOME=/opt/app/seatunnel-web
 WORKDIR $SEATUNNEL_WEB_HOME
 
 # Copy pre-built distribution (run mvn package first)
-ADD seatunnel-server/seatunnel-app/target/seatunnel-web/ $SEATUNNEL_WEB_HOME/
+ADD seatunnel-web-dist/target/apache-seatunnel-web-*/ $SEATUNNEL_WEB_HOME/
 
 EXPOSE 8080
 
