@@ -1,10 +1,4 @@
-# Build stage: Maven builds both frontend (via frontend-maven-plugin) and backend
-FROM maven:3.8-eclipse-temurin-8 AS builder
-WORKDIR /app
-COPY . .
-RUN mvn package -pl seatunnel-server/seatunnel-app -am -DskipTests -B
-
-# Final image
+# Final image only - build Maven separately before docker build
 FROM eclipse-temurin:8-jre-alpine
 LABEL org.opencontainers.image.source="https://github.com/shapia09/seatunnel-web"
 
@@ -14,8 +8,8 @@ ENV SEATUNNEL_WEB_HOME=/opt/app/seatunnel-web
 
 WORKDIR $SEATUNNEL_WEB_HOME
 
-# Copy built distribution
-COPY --from=builder /app/seatunnel-server/seatunnel-app/target/seatunnel-web/ ./
+# Copy pre-built distribution (run mvn package first)
+ADD seatunnel-server/seatunnel-app/target/seatunnel-web/ $SEATUNNEL_WEB_HOME/
 
 EXPOSE 8080
 

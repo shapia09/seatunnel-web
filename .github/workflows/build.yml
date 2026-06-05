@@ -20,6 +20,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 8
+          cache: maven
+
+      - name: Set up Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: Build frontend
+        working-directory: seatunnel-ui
+        run: |
+          npm install --ignore-scripts
+          npm run build:prod
+
+      - name: Build backend with Maven
+        run: mvn package -pl seatunnel-server/seatunnel-app -am -DskipTests -B
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
