@@ -13,4 +13,4 @@ COPY seatunnel-web-dist/target/apache-seatunnel-web-1.0.3-SNAPSHOT/apache-seatun
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "/opt/app/seatunnel-web/bin/seatunnel-backend-daemon.sh", "start"]
+CMD ["java", "-cp", "libs/*:conf", "org.apache.seatunnel.app.SeatunnelApplication"]
